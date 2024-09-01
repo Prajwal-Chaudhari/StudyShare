@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Share</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="formbox">
+            <!-- Tabs -->
+            <div class="buttonbox">
+                <button type="button" class="button-1" onclick="showLogin()">Login</button>
+                <button type="button" class="button-2" onclick="showRegister()">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="form-content">
+                <form class="input-group login-cred">
+                    <input type="text" class="input-field username" placeholder="Username" required>
+                    <input type="password" class="input-field password" placeholder="Enter Password" required>
+                    <div class="block">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="check-box">
+                            <span class="rem">Remember Username</span>
+                        </label>
+                    </div>
+                    <div class="btn-3-block">
+                        <button type="submit" class="glow-on-hover">Login</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="form-content" style="display: none;">
+                <form class="input-group register-cred" onsubmit="return validatePasswords()">
+                    <input type="text" class="input-field" placeholder="Name" required>
+                    <input type="text" class="input-field" placeholder="Surname" required>
+                    <input type="text" class="input-field" placeholder="Create a Username" required>
+                    <input type="tel" class="input-field" placeholder="Mobile Number" required>
+                    <input type="email" class="input-field" placeholder="Email" required>
+                    <input type="number" class="input-field" placeholder="Age" required>
+                    <input type="password" id="create-password" class="input-field" placeholder="Create a Password" required>
+                    <input type="password" id="retype-password" class="input-field" placeholder="Re-type Password" required>
+                    <div class="btn-3-block">
+                        <button type="submit" class="glow-on-hover">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+        }
+
+        function showRegister() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        }
+
+        function validatePasswords() {
+            const password = document.getElementById('create-password').value;
+            const retypePassword = document.getElementById('retype-password').value;
+            
+            if (password !== retypePassword) {
+                alert('Passwords do not match');
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>
